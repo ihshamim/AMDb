@@ -798,8 +798,10 @@
                 
                 if (data.results && data.results.length > 0) {
                     if (page === 1 && filterType === 'trending') {
-                        updateHeroBanner(data.results[0]); 
-                        renderCards(data.results.slice(1)); 
+                        // Pick a random movie from top 5 trending for the hero section
+                        const randomIdx = Math.floor(Math.random() * Math.min(data.results.length, 5));
+                        updateHeroBanner(data.results[randomIdx]); 
+                        renderCards(data.results); 
                     } else {
                         renderCards(data.results);
                     }
