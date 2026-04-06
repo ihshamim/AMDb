@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Live Movie Search App - Find your favorite movies, ratings, and details.">
-    <title>CineVault | Premium Movie Hub</title>
+    <meta name="description" content="AMDb (All Movie Database) - Find your favorite movies, ratings, and details.">
+    <title>AMDb | All Movie Database</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +27,7 @@
             --modal-bg: rgba(255, 255, 255, 0.95);
             --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --footer-bg: #ffffff;
         }
 
         [data-theme="dark"] {
@@ -39,6 +40,7 @@
             --modal-bg: rgba(15, 16, 20, 0.95);
             --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.4);
             --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.7);
+            --footer-bg: #0b0c10;
         }
 
         /* Global Styles */
@@ -92,7 +94,7 @@
         .search-container { position: relative; display: flex; align-items: center;}
 
         .search-container input {
-            padding: 10px 40px 10px 40px; /* Space for both search and mic icon */
+            padding: 10px 40px 10px 40px; 
             border-radius: 30px;
             border: 1px solid var(--border-color);
             background: rgba(128, 128, 128, 0.1);
@@ -318,6 +320,81 @@
         .load-more-container { text-align: center; margin-top: 40px; display: none; }
         .load-more-container.active { display: block; }
 
+        /* Footer Styles */
+        footer {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 5% 40px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+        
+        .footer-brand .logo { margin-bottom: 20px; }
+        .footer-brand p { 
+            color: #888; 
+            line-height: 1.6; 
+            font-size: 14px; 
+            margin-bottom: 25px;
+            max-width: 300px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--accent-color); }
+        
+        .social-links { display: flex; gap: 15px; }
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(128,128,128,0.1);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            max-width: 1600px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 13px;
+        }
+
         /* Skeleton Loading */
         .skeleton { background: var(--skeleton-bg); background-size: 200% 100%; animation: loading 1.5s infinite; }
         @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -396,6 +473,7 @@
             .modal-poster { width: 100%; height: 350px; }
             .modal-poster::after { background: linear-gradient(to bottom, transparent 60%, var(--modal-bg) 100%); }
             .modal-info { width: 100%; padding: 25px; }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
 
         @media (max-width: 768px) {
@@ -409,6 +487,10 @@
             .hero-title { font-size: 28px; }
             .hero-desc { font-size: 14px; }
             .movie-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { margin: 0 auto 25px; }
+            .social-links { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
 
         @media (max-width: 480px) {
@@ -428,7 +510,7 @@
     <!-- Navbar -->
     <nav>
         <a href="#" class="logo" onclick="initApp()">
-            <i class="fa-solid fa-film"></i> CineVault
+            <i class="fa-solid fa-film"></i> AMDb
         </a>
         <div class="nav-controls">
             <div class="search-container">
@@ -485,6 +567,51 @@
 
         <div class="ad-banner" style="margin-top: 40px;">AdSense Banner (Bottom)</div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-film"></i> AMDb
+                </a>
+                <p>All Movie Database (AMDb) is your ultimate destination for everything cinema. Discover trending blockbusters, ratings, and detailed information about your favorite movies.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="setFilter('trending', document.querySelector('.filter-btn'))">Trending Now</a></li>
+                    <li><a href="#" onclick="setFilter('popular', document.querySelectorAll('.filter-btn')[1])">Most Popular</a></li>
+                    <li><a href="#" onclick="showFavorites()">My Favorites</a></li>
+                    <li><a href="#">Latest Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <p style="font-size: 13px; color: #666; margin-bottom: 10px;">This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+                <p style="font-size: 13px; color: #666;">Data provided by global media servers for educational purposes.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AMDb - All Movie Database. All rights reserved.</p>
+            <p>Made with <i class="fa-solid fa-heart" style="color: var(--accent-color);"></i> for Movie Lovers</p>
+        </div>
+    </footer>
 
     <!-- Modal for Movie Details -->
     <div class="modal-overlay" id="modal-overlay">
@@ -608,7 +735,7 @@
             if (SpeechRecognition) {
                 const recognition = new SpeechRecognition();
                 recognition.continuous = false;
-                recognition.lang = 'en-US'; // Or 'bn-BD' for Bengali
+                recognition.lang = 'en-US'; 
                 
                 micBtn.onclick = () => {
                     recognition.start();
@@ -643,7 +770,6 @@
             if (query) return `${BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${query}&page=${page}`;
             if (type === 'trending') return `${BASE_URL}/trending/movie/day?api_key=${TMDB_API_KEY}&page=${page}`;
             if (type === 'popular') return `${BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&page=${page}`;
-            // Assuming type is a Genre ID (e.g., 28 for Action)
             return `${BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${type}&page=${page}`;
         }
 
@@ -668,12 +794,12 @@
                 const res = await fetch(url);
                 const data = await res.json();
                 
-                if (page === 1) movieGrid.innerHTML = ''; // Clear skeletons
+                if (page === 1) movieGrid.innerHTML = ''; 
                 
                 if (data.results && data.results.length > 0) {
                     if (page === 1 && filterType === 'trending') {
-                        updateHeroBanner(data.results[0]); // Make top movie the hero
-                        renderCards(data.results.slice(1)); // Render the rest in grid
+                        updateHeroBanner(data.results[0]); 
+                        renderCards(data.results.slice(1)); 
                     } else {
                         renderCards(data.results);
                     }
@@ -694,13 +820,10 @@
             if (query.trim().length > 1) {
                 heroBanner.style.display = 'none';
                 sectionTitle.innerText = `Search Results for "${query}"`;
-                
-                // Remove active class from filters
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                
                 searchMovies(query, 1);
             } else if (query.trim().length === 0) {
-                document.querySelector('.filter-btn').click(); // Go back to default (Trending)
+                document.querySelector('.filter-btn').click(); 
             }
         }, 600);
 
@@ -752,11 +875,13 @@
 
         function setFilter(type, btnElement) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
+            if (btnElement) btnElement.classList.add('active');
             searchInput.value = '';
             sectionTitle.dataset.type = 'filter';
-            sectionTitle.innerText = btnElement.innerText;
+            sectionTitle.innerText = btnElement ? btnElement.innerText : 'Trending Now';
             fetchMoviesByFilter(type, 1);
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- HERO BANNER LOGIC --- //
@@ -771,7 +896,6 @@
             heroDetailsBtn.style.display = 'flex';
             heroDetailsBtn.onclick = () => openDetails(movie.id);
 
-            // Fetch video for hero
             try {
                 const res = await fetch(`${BASE_URL}/movie/${movie.id}/videos?api_key=${TMDB_API_KEY}`);
                 const data = await res.json();
@@ -796,7 +920,7 @@
 
         function renderCards(movies) {
             movies.forEach((movie, index) => {
-                if (!movie.poster_path && !movie.backdrop_path) return; // Skip if no images at all
+                if (!movie.poster_path && !movie.backdrop_path) return; 
 
                 const posterImg = movie.poster_path 
                     ? `${IMG_URL}${movie.poster_path}` 
@@ -810,7 +934,6 @@
                 card.className = 'movie-card';
                 card.style.animationDelay = `${(index % 20) * 0.05}s`;
                 
-                // Passing object to onclick using JSON stringify to avoid quote escaping issues
                 const movieDataStr = encodeURIComponent(JSON.stringify({
                     id: movie.id, title: movie.title, poster_path: movie.poster_path, release_date: movie.release_date
                 }));
@@ -841,7 +964,6 @@
             e.stopPropagation(); 
             const btn = e.currentTarget;
             const movie = JSON.parse(decodeURIComponent(encodedMovieData));
-            
             const index = favorites.findIndex(f => f.id === movie.id);
 
             if (index > -1) {
@@ -873,25 +995,21 @@
                 return;
             }
             renderCards(favorites);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- MODAL & URL ROUTING LOGIC --- //
         async function openDetails(id) {
             currentMovieId = id;
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden'; 
             
-            // Handle History PushState safely to avoid SecurityError in restricted environments
             try {
-                // Use a relative path or full URL of current origin to prevent blob URL issues
                 const url = new URL(window.location.href);
                 url.searchParams.set('movie', id);
                 window.history.pushState({ movieId: id }, '', url.toString());
-            } catch (e) {
-                console.warn("History pushState blocked by browser security (likely running in a sandboxed iframe). Routing ignored.");
-            }
+            } catch (e) {}
 
-            // Reset UI
             document.getElementById('modal-title').innerText = "Loading...";
             document.getElementById('modal-img').src = "https://via.placeholder.com/400x600/1a1b22/FFFFFF?text=Loading...";
             document.getElementById('modal-plot').innerText = "";
@@ -913,7 +1031,6 @@
                 const posterImg = data.poster_path ? `${IMG_URL}${data.poster_path}` : "https://via.placeholder.com/400x600/1a1b22/FFFFFF?text=No+Poster";
                 document.getElementById('modal-img').src = posterImg;
 
-                // Genres
                 const genreContainer = document.getElementById('modal-genres');
                 genreContainer.innerHTML = '';
                 if(data.genres) {
@@ -922,15 +1039,12 @@
                     });
                 }
 
-                // Director
                 const director = data.credits.crew.find(member => member.job === 'Director');
                 document.getElementById('modal-director').innerText = director ? director.name : 'Unknown';
 
-                // Cast (Top 5)
                 const cast = data.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
                 document.getElementById('modal-cast').innerText = cast || 'Unknown';
 
-                // Trailer
                 const trailer = data.videos.results.find(vid => vid.type === 'Trailer' && vid.site === 'YouTube');
                 if (trailer) {
                     const trailerBtn = document.getElementById('modal-trailer-btn');
@@ -938,10 +1052,8 @@
                     trailerBtn.onclick = () => openTrailer(trailer.key);
                 }
                 
-                // Share functionality
                 document.getElementById('modal-share-btn').onclick = () => {
                     let shareUrl = window.location.href;
-                    // If running in sandbox where URL didn't update, construct it manually
                     if (!shareUrl.includes('movie=')) {
                         const url = new URL(window.location.href);
                         url.searchParams.set('movie', currentMovieId);
@@ -954,21 +1066,15 @@
                         btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
                         setTimeout(() => btn.innerHTML = originalHTML, 2000);
                     }).catch(err => {
-                        console.error('Failed to copy link: ', err);
-                        // Fallback for sandboxed environments
                         const textArea = document.createElement("textarea");
                         textArea.value = shareUrl;
                         document.body.appendChild(textArea);
                         textArea.select();
-                        try {
-                            document.execCommand('copy');
-                            const btn = document.getElementById('modal-share-btn');
-                            const originalHTML = btn.innerHTML;
-                            btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
-                            setTimeout(() => btn.innerHTML = originalHTML, 2000);
-                        } catch (err) {
-                            console.error('Fallback: Oops, unable to copy', err);
-                        }
+                        document.execCommand('copy');
+                        const btn = document.getElementById('modal-share-btn');
+                        const originalHTML = btn.innerHTML;
+                        btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+                        setTimeout(() => btn.innerHTML = originalHTML, 2000);
                         document.body.removeChild(textArea);
                     });
                 };
@@ -984,34 +1090,27 @@
         function closeDetails() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
-            // Clean URL safely
             try {
                 const url = new URL(window.location.href);
                 url.searchParams.delete('movie');
                 window.history.pushState({}, '', url.toString());
-            } catch (e) {
-                console.warn("History pushState blocked by browser security.");
-            }
+            } catch (e) {}
         }
 
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) closeDetails();
         });
 
-        // Handle Browser Back Button for Modal URL routing safely
         window.addEventListener('popstate', (e) => {
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 if (!urlParams.get('movie')) closeDetails();
-            } catch (error) {
-                // Safe fallback
-            }
+            } catch (error) {}
         });
 
         // --- TRAILER LOGIC --- //
         function openTrailer(videoKey) {
             trailerOverlay.classList.add('active');
-            // Autoplay the video
             trailerIframe.src = `https://www.youtube.com/embed/${videoKey}?autoplay=1`;
         }
 
@@ -1022,10 +1121,9 @@
 
         function closeTrailer() {
             trailerOverlay.classList.remove('active');
-            trailerIframe.src = ''; // Stop video from playing in background
+            trailerIframe.src = ''; 
         }
 
-        // Utility: Debounce
         function debounce(func, delay) {
             let timeoutId;
             return function (...args) {
@@ -1034,9 +1132,7 @@
             };
         }
 
-        // Start App
         initApp();
-
     </script>
 </body>
 </html>
